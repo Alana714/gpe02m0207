@@ -67,11 +67,11 @@ main(){
         scanf("%d", &idade);
     }while(idade != -1);
 
-    porcentagem = totalEspecifico/totalHabitantes * 100;
+    porcentagem = (float)totalEspecifico/totalHabitantes * 100;
 
      printf("\nTotal de habitantes cadastrados: %d", totalHabitantes);
      printf("\nTotal de pessoas com caracteristicas especificas: %d", totalEspecifico);
-     printf("\nPorcentagem de pessoas com caracteristicas especificas: %d", porcentagem);
+     printf("\nPorcentagem de pessoas com caracteristicas especificas: %f", porcentagem);
 
 
 }
