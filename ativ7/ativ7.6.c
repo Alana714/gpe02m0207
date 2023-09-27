@@ -20,8 +20,23 @@ main(){
 
             break;
 
-            case
+            case 2:
+            precoUnitario = 2.00;
+            valorTotal += 2.00;
+            strcpy(maca, "Maca");
+
+            break;
+
+            case 3:
+            precoUnitario = 4.00;
+            valorTotal += 4.00;
+            strcpy(pera, "Pera");
+
+            break;
         }
-    }
+        printf("Deseja fazer uma nova compra: 1-Sim 2-Nao");
+        scanf("%d", &opcao);
+        
+    }while(opcao != 0);
     
 }
