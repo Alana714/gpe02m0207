@@ -1,0 +1,86 @@
+#include<stdio.h>
+
+int opcaoPagamento();
+void precoAVista(float totalCompra);
+void precoDuasVezes(float totalCompra);
+void precoMaisTresVezes(float totalCompra);
+
+main(){
+
+    int opcao;
+    float totalCompra;
+
+    printf("Digite o total da compra: ");
+    scanf("%f", &totalCompra);
+
+    opcao = opcaoPagamento();
+
+    switch (opcao){
+        case 1:
+        precoAVista(totalCompra);
+        break;
+
+        case 2:
+        precoDuasVezes(totalCompra);
+        break;
+
+        case 3:
+        precoMaisTresVezes(totalCompra);
+        break;
+    }
+}
+
+int opcaoPagamento(){
+    int opcaoEscolhida;
+    do{
+        printf("1- A vista - 10%% desconto");
+        printf("\n2- Duas vezes - preco etiqueta");
+        printf("\n3- 3 a 10 vezes com juros de 3%%");
+        printf("\nDigite a opcao escolhida");
+        scanf("%d", &opcaoEscolhida);
+        if(opcaoEscolhida < 1 || opcaoEscolhida > 3){
+            printf("Opcao invalida");
+        }
+    }while(opcaoEscolhida < 1 || opcaoEscolhida > 3);
+
+    return opcaoEscolhida;
+}
+
+void precoAVista(float totalCompra){
+    float desconto = totalCompra * 0.10;
+    float valorFinal = totalCompra - desconto;
+    printf("Total do desconto: %.2f", desconto);
+    printf("\nTotal final da compra: %.2f", valorFinal);
+}
+
+void precoDuasVezes(float totalCompra){
+    float valorParcela = totalCompra/2;
+    printf("Total da compra: %.2f", totalCompra);
+    printf("\nTotal final de cada parcela: %.2f", valorParcela);
+}
+
+void precoMaisTresVezes(float totalCompra){
+
+    int parcelas;
+    float juros, totalCompra, totalParcela, valorFinal;
+    
+    if(totalCompra < 100){
+        printf("Valor invalido para parcelar em mais de tres vezes");
+        return;
+
+    }
+    do{
+        printf("Digite a quantidade de parcelas: ");
+        scanf("%d", &parcelas);
+        if(parcelas < 3 || parcelas > 10){
+            printf("Quantidade de parcelas invalido");
+        }
+    }while(parcelas < 3 || parcelas > 10);
+
+    juros = totalCompra * 0.03;
+    valorFinal = totalCompra + juros;
+    totalParcela = valorFinal/parcelas;
+    printf("\nTotal do juro: %.2f", juros);
+    printf("\nTotal final de cada parcela: %.2f", totalParcela);
+    printf("\nTotal compra com juros: %.2f", valorFinal);
+}
